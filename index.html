@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ratna Koushik Appasani — Software Engineer</title>
+  <meta name="description"
+    content="Portfolio of Ratna Koushik Appasani – Software Engineer, Designer, and Porsche enthusiast." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #000;
+      --accent: #c8ff00;
+      --white: #f0f0f0;
+      --gray: #888;
+      --dark: #080808;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    #hero {
+      position: relative;
+      width: 100vw;
+      height: 500vh;
+    }
+
+    #canvas-wrapper {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #main-canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    #text-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 60px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    #text-content {
+      max-width: 500px;
+    }
+
+    #text-content .name {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    #text-content .role {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(0.8rem, 1.2vw, 1.2rem);
+      color: var(--accent);
+      letter-spacing: 4px;
+      margin-bottom: 8px;
+    }
+
+    #text-content .location {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--gray);
+      letter-spacing: 3px;
+      margin-top: 16px;
+      margin-bottom: 40px;
+    }
+
+    #text-content .links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      pointer-events: auto;
+    }
+
+    #text-content .links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--gray);
+      text-decoration: none;
+      letter-spacing: 2px;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    #text-content .links a::before {
+      content: '>';
+      color: var(--accent);
+    }
+
+    #text-content .links a:hover { color: var(--accent); }
+
+    #scroll-hint {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.6s;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    #scroll-hint span {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: #3a3a3a;
+      text-transform: uppercase;
+    }
+
+    .arrow {
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, #3a3a3a, transparent);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: .2 }
+      50% { opacity: .9 }
+    }
+
+    #phase-label {
+      position: absolute;
+      top: 28px;
+      right: 36px;
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: #222;
+      text-transform: uppercase;
+      pointer-events: none;
+      z-index: 10;
+      transition: color 0.8s;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 48px;
+    }
+
+    .tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 48px;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #1a1a1a, transparent);
+    }
+
+    .hl { color: var(--accent); }
+
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      min-height: 90vh;
+    }
+
+    .about-text h2 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 24px;
+    }
+
+    .about-text .subtitle {
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      margin-bottom: 32px;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .about-image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .about-image img {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 8px;
+      filter: grayscale(20%);
+      transition: filter 0.4s, transform 0.4s;
+    }
+
+    .about-image img:hover {
+      filter: grayscale(0%);
+      transform: scale(1.02);
+    }
+
+    .about-image::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: -20px;
+      bottom: -20px;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      opacity: 0.3;
+    }
+
+    .stats { display: flex; gap: 48px; margin-top: 48px; }
+
+    .stat { text-align: left; }
+
+    .stat .number {
+      font-family: 'Space Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .stat .label {
+      font-size: 0.85rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    #skills {
+      background: var(--dark);
+      border-top: 1px solid #111;
+      border-bottom: 1px solid #111;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+
+    .skill-category h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .skill-category h3 span { color: var(--accent); }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .skill-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      padding: 8px 16px;
+      background: #0f0f0f;
+      border: 1px solid #222;
+      border-radius: 4px;
+      color: var(--gray);
+      transition: all 0.3s;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--accent);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), #222);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 48px;
+      padding: 24px;
+      background: var(--dark);
+      border-radius: 8px;
+      border: 1px solid #181818;
+      transition: border-color 0.3s;
+    }
+
+    .timeline-item:hover { border-color: var(--accent); }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -46px;
+      top: 32px;
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 20px var(--accent);
+    }
+
+    .timeline-item h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 4px; }
+
+    .timeline-item .company {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .timeline-item p {
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--dark);
+      border: 1px solid #181818;
+      border-radius: 10px;
+      padding: 32px;
+      transition: all 0.3s;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-8px);
+    }
+
+    .project-card .number {
+      font-family: 'Space Mono', monospace;
+      font-size: 48px;
+      font-weight: 700;
+      color: #111;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .project-card:hover .number { color: var(--accent); }
+
+    .project-card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 12px; }
+
+    .project-card p { font-size: 0.9rem; color: var(--gray); margin-bottom: 20px; }
+
+    .project-card .ctag {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 4px 10px;
+      border-radius: 3px;
+      margin-right: 8px;
+    }
+
+    .project-card .links {
+      margin-top: 16px;
+      display: flex;
+      gap: 16px;
+    }
+
+    .project-card .links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: #555;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .project-card .links a:hover { color: var(--accent); }
+
+    #interests {
+      background: var(--dark);
+      border-top: 1px solid #111;
+      border-bottom: 1px solid #111;
+      text-align: center;
+    }
+
+    .interests-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 48px;
+      margin-top: 48px;
+    }
+
+    .interest-item { text-align: center; transition: transform 0.3s; }
+    .interest-item:hover { transform: scale(1.1); }
+    .interest-icon { font-size: 48px; margin-bottom: 12px; }
+    .interest-item span {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    #contact {
+      text-align: center;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    #contact h2 { margin-bottom: 24px; }
+
+    #contact p {
+      font-size: 1.1rem;
+      color: var(--gray);
+      margin-bottom: 48px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--accent);
+      color: #000;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-decoration: none;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-family: 'Space Mono', monospace;
+      transition: all 0.2s;
+    }
+
+    .btn:hover { opacity: 0.85; transform: scale(1.03); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid #333;
+    }
+
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    footer {
+      text-align: center;
+      padding: 36px 32px;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: #2a2a2a;
+      letter-spacing: 2px;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s, transform 0.7s;
+    }
+
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      #text-overlay { padding: 0 24px; }
+      #text-content .name { font-size: 2.5rem; }
+      #about { grid-template-columns: 1fr; gap: 48px; }
+      .about-image { order: -1; }
+      .about-image::before { display: none; }
+      .stats { flex-wrap: wrap; }
+      .section { padding: 80px 24px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="hero">
+    <div id="canvas-wrapper">
+      <canvas id="main-canvas"></canvas>
+      <div id="text-overlay">
+        <div id="text-content">
+          <div class="name">RATNA<br>KOUSHIK</div>
+          <div class="role">SOFTWARE ENGINEER</div>
+          <div class="role">DESIGNER</div>
+          <div class="location">TRINITY WESTERN UNIVERSITY</div>
+          <div class="links">
+            <a href="https://github.com/itsgnex" target="_blank">GITHUB</a>
+            <a href="https://linkedin.com/in/ratnakoushik" target="_blank">LINKEDIN</a>
+            <a href="mailto:koushik@appasani.dev">EMAIL</a>
+          </div>
+        </div>
+      </div>
+      <div id="scroll-hint">
+        <span>Scroll</span>
+        <div class="arrow"></div>
+      </div>
+      <div id="phase-label">// initialising</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <section id="about" class="section fade-in">
+    <div class="about-text">
+      <div class="tag">// About</div>
+      <h2>Ratna Koushik<br><span class="hl">Appasani</span></h2>
+      <div class="subtitle">SOFTWARE ENGINEER & DESIGNER</div>
+      <p>I craft elegant digital experiences and robust software systems. Currently studying Computer Science at Trinity Western University, I'm passionate about building products that blend technical excellence with thoughtful design.</p>
+      <p>When I'm not coding, you'll find me behind the wheel of a Porsche 911 or shooting hoops on the basketball court.</p>
+      <div class="stats">
+        <div class="stat">
+          <div class="number">4+</div>
+          <div class="label">Projects</div>
+        </div>
+        <div class="stat">
+          <div class="number">2</div>
+          <div class="label">Internships</div>
+        </div>
+        <div class="stat">
+          <div class="number">2027</div>
+          <div class="label">Graduation</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-image">
+      <img src="face.png" alt="Ratna Koushik Appasani">
+    </div>
+  </section>
+
+  <section id="skills" class="section fade-in">
+    <div class="tag">// Skills</div>
+    <h2>Tech Stack</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3><span>//</span> Languages</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">Dart</span>
+          <span class="skill-tag">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3><span>//</span> Frameworks</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Next.js</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Three.js</span>
+          <span class="skill-tag">FastAPI</span>
+          <span class="skill-tag">Flutter</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3><span>//</span> Tools</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Postman</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3><span>//</span> Concepts</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Full-Stack Dev</span>
+          <span class="skill-tag">UI/UX Design</span>
+          <span class="skill-tag">Agile</span>
+          <span class="skill-tag">REST APIs</span>
+          <span class="skill-tag">AI/ML</span>
+          <span class="skill-tag">Whisper</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section fade-in">
+    <div class="tag">// Experience</div>
+    <h2>Where I've <span class="hl">Worked</span></h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Software Engineering Intern</h3>
+        <div class="company">Vbrick Systems — 2024</div>
+        <p>Developed and maintained enterprise video platform features using Java and Spring Boot. Collaborated with cross-functional teams to deliver scalable solutions serving millions of users.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Student Programmer</h3>
+        <div class="company">Trinity Western University — 2023</div>
+        <p>Provided technical support and developed internal tools for the university community. Built applications to streamline administrative processes and improve student experience.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section fade-in">
+    <div class="tag">// Projects</div>
+    <h2>Selected <span class="hl">Work</span></h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="number">01</div>
+        <h3>File Reader</h3>
+        <p>Local-first audio transcription and summarization tool using Whisper AI. Supports MP3, WAV, M4A, OGG with Q&A capabilities.</p>
+        <span class="ctag">Python</span>
+        <span class="ctag">FastAPI</span>
+        <div class="links">
+          <a href="https://github.com/itsgnex/file-reader" target="_blank">View Code →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="number">02</div>
+        <h3>AI Project</h3>
+        <p>AI group class project exploring machine learning concepts and implementations for practical applications.</p>
+        <span class="ctag">Python</span>
+        <span class="ctag">AI/ML</span>
+        <div class="links">
+          <a href="https://github.com/itsgnex/AI-Project-2" target="_blank">View Code →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="number">03</div>
+        <h3>TWU Hackathon Platform</h3>
+        <p>Neural network backend for hosting and pitting chess bots against each other. Part of the TWU 2026 hackathon project.</p>
+        <span class="ctag">Python</span>
+        <span class="ctag">Neural Networks</span>
+        <div class="links">
+          <a href="https://github.com/itsgnex/TWU-Hackathon-2026-Neural-Network" target="_blank">View Code →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="number">04</div>
+        <h3>Donation Tracker</h3>
+        <p>Cross-platform mobile app for tracking donation intake and management. Built with Flutter for iOS and Android.</p>
+        <span class="ctag">Dart</span>
+        <span class="ctag">Flutter</span>
+        <div class="links">
+          <a href="https://github.com/itsgnex/Donation-Intake-tracker" target="_blank">View Code →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="interests" class="section fade-in">
+    <div class="tag">// Interests</div>
+    <h2>Beyond <span class="hl">Code</span></h2>
+    <div class="interests-grid">
+      <div class="interest-item">
+        <div class="interest-icon">🏎️</div>
+        <span>Porsche 911</span>
+      </div>
+      <div class="interest-item">
+        <div class="interest-icon">🏀</div>
+        <span>Basketball</span>
+      </div>
+      <div class="interest-item">
+        <div class="interest-icon">🎨</div>
+        <span>Design</span>
+      </div>
+      <div class="interest-item">
+        <div class="interest-icon">🚀</div>
+        <span>Startups</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section fade-in">
+    <div class="tag">// Contact</div>
+    <h2>Let's <span class="hl">Connect</span></h2>
+    <p>Whether it's a startup idea, a side project, or just chatting about tech and cars — I'm always open.</p>
+    <div class="contact-links">
+      <a class="btn" href="mailto:koushik@appasani.dev">Say Hello</a>
+      <a class="btn btn-outline" href="https://linkedin.com/in/ratnakoushik" target="_blank">LinkedIn</a>
+      <a class="btn btn-outline" href="https://github.com/itsgnex" target="_blank">GitHub</a>
+    </div>
+  </section>
+
+  <footer>© 2026 Ratna Koushik Appasani · Built from scratch</footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const CELL = 13;
+      const FONT = `${CELL}px "Space Mono","Courier New",monospace`;
+
+      const DENSITY = [
+        ' ', ' ', ' ', '`', '`', '.', '.', ',', ',', ':', ';', '!', '|', 'i', 'l', '1', 't', 'r', '/', ')', 'J',
+        '7', '?', 'c', 'v', 'f', 'x', 'z', 'L', 'o', 'n', 's', 'u', 'y', '2', 'a', 'e', '3', 'C', '4', '5', 'F',
+        'S', 'X', 'P', 'E', 'A', 'Z', 'K', '8', 'G', 'B', 'D', 'R', 'H', 'Q', 'U', '0', 'N', 'W', 'M', '@', '#', '%', '%'
+      ];
+      const DL = DENSITY.length - 1;
+
+      const NOISE = '0123456789?=+-~abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL@#$%^&*()[]{}|;:,.<>/\\`';
+
+      const NOISE_B = 28;
+      const FACE_LO = 45;
+      const FACE_HI = 230;
+      const MOUSE_RADIUS = 90;
+      const MOUSE_INTENSITY = 180;
+
+      const canvas = document.getElementById('main-canvas');
+      const ctx = canvas.getContext('2d');
+      const hint = document.getElementById('scroll-hint');
+      const label = document.getElementById('phase-label');
+      let W = 0, H = 0, COLS = 0, ROWS = 0;
+
+      let cells = [];
+
+      function makeCell() {
+        return {
+          ch: rndNoise(),
+          noise: true,
+          faceBright: 0,
+          faceChar: ' ',
+          carBright: 0,
+          carChar: ' ',
+          hasFace: false,
+          hasCar: false,
+          faceProgress: 0,
+          faceDelay: 0,
+          carOffset: Math.random() * 0.18,
+          flipT: Math.random() * 600,
+          flipI: 200 + Math.random() * 700,
+          dist: 0,
+        };
+      }
+
+      function rndNoise() { return NOISE[Math.floor(Math.random() * NOISE.length)]; }
+      function brightToChar(b01) { return DENSITY[Math.round(b01 * DL)]; }
+
+      function sampleImage(img) {
+        const off = document.createElement('canvas');
+        off.width = COLS; off.height = ROWS;
+        const oc = off.getContext('2d');
+        oc.fillStyle = '#000';
+        oc.fillRect(0, 0, COLS, ROWS);
+
+        const imgAspect = img.width / img.height;
+        const gridAspect = COLS / ROWS;
+        let drawW, drawH, drawX, drawY;
+        const scale = 0.65;
+
+        if (imgAspect > gridAspect) {
+          drawH = ROWS * scale;
+          drawW = drawH * imgAspect;
+          drawX = (COLS - drawW) / 2;
+          drawY = (ROWS - drawH) / 2;
+        } else {
+          drawW = COLS * scale;
+          drawH = drawW / imgAspect;
+          drawX = (COLS - drawW) / 2;
+          drawY = (ROWS - drawH) / 2;
+        }
+
+        oc.drawImage(img, drawX, drawY, drawW, drawH);
+        const d = oc.getImageData(0, 0, COLS, ROWS).data;
+        const m = new Float32Array(COLS * ROWS);
+        for (let i = 0; i < COLS * ROWS; i++) {
+          const b = i * 4;
+          m[i] = (d[b] + d[b + 1] + d[b + 2]) / (3 * 255);
+        }
+        return m;
+      }
+
+      let faceMap = null, carMap = null, faceImgRef = null, carImgRef = null;
+
+      function buildGrid() {
+        W = canvas.offsetWidth;
+        H = canvas.offsetHeight;
+        canvas.width = W * devicePixelRatio;
+        canvas.height = H * devicePixelRatio;
+        ctx.scale(devicePixelRatio, devicePixelRatio);
+
+        COLS = Math.ceil(W / CELL) + 1;
+        ROWS = Math.ceil(H / CELL) + 1;
+
+        const n = COLS * ROWS;
+        cells = Array.from({ length: n }, makeCell);
+
+        if (faceImgRef && carImgRef) rebuildMaps();
+      }
+
+      function rebuildMaps() {
+        faceMap = sampleImage(faceImgRef);
+        carMap = sampleImage(carImgRef);
+        cells.forEach((c, i) => {
+          const fb = faceMap[i], cb = carMap[i];
+          c.hasFace = fb > 0.06;
+          c.faceBright = FACE_LO + fb * (FACE_HI - FACE_LO);
+          c.faceChar = brightToChar(fb);
+          c.hasCar = cb > 0.06;
+          c.carBright = FACE_LO + cb * (FACE_HI - FACE_LO);
+          c.carChar = brightToChar(cb);
+        });
+      }
+
+      let phase = 'noise';
+      let phaseElapsed = 0;
+      const NOISE_DUR = 0;
+      const CHAOS_DUR = 600;
+      const FACE_SETTLE = 2500;
+
+      let assetsOK = false;
+      let scrollP = 0;
+
+      function planFaceCascade() {
+        const cx = COLS / 2, cy = 0;
+        let maxDist = 0;
+        cells.forEach((c, i) => {
+          const col = i % COLS, row = Math.floor(i / COLS);
+          const d = Math.hypot(col - cx, row - cy);
+          if (d > maxDist) maxDist = d;
+          c._waveDist = d;
+        });
+        cells.forEach(c => {
+          c.faceDelay = (c._waveDist / maxDist) * FACE_SETTLE * 0.65;
+          c.faceProgress = 0;
+        });
+      }
+
+      function startChaos() {
+        phase = 'chaos';
+        phaseElapsed = 0;
+        label.textContent = '// decoding';
+        label.style.color = '#c8ff00';
+      }
+
+      function startFace() {
+        phase = 'face';
+        phaseElapsed = 0;
+        planFaceCascade();
+        label.textContent = '// rendering face';
+        label.style.color = '#888';
+      }
+
+      let mouseX = -9999, mouseY = -9999;
+      let mouseOnCanvas = false;
+
+      canvas.addEventListener('mousemove', e => {
+        const r = canvas.getBoundingClientRect();
+        mouseX = e.clientX - r.left;
+        mouseY = e.clientY - r.top;
+        mouseOnCanvas = true;
+      });
+      canvas.addEventListener('mouseleave', () => { mouseOnCanvas = false; });
+
+      const hero = document.getElementById('hero');
+
+      function onScroll() {
+        const h = hero.offsetHeight - window.innerHeight;
+        scrollP = Math.max(0, Math.min(window.scrollY / h, 1));
+        hint.style.opacity = window.scrollY > 50 ? '0' : '1';
+
+        if (phase === 'face' || phase === 'car') {
+          if (scrollP > 0.01) {
+            phase = 'car';
+            label.textContent = '// porsche 911';
+            label.style.color = '#888';
+          } else {
+            phase = 'face';
+            label.textContent = '// rendering face';
+          }
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', () => { buildGrid(); }, false);
+
+      function easeOut3(t) { return 1 - Math.pow(1 - t, 3); }
+      function easeInOut(t) { return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+
+      let last = 0;
+
+      function loop(now) {
+        requestAnimationFrame(loop);
+        const dt = Math.min(now - last, 48);
+        last = now;
+        phaseElapsed += dt;
+
+        if (phase === 'noise' && assetsOK && phaseElapsed >= NOISE_DUR) startChaos();
+        if (phase === 'chaos' && phaseElapsed >= CHAOS_DUR) startFace();
+
+        ctx.fillStyle = '#000';
+        ctx.fillRect(0, 0, W, H);
+        ctx.font = FONT;
+        ctx.textBaseline = 'top';
+
+        for (let i = 0; i < cells.length; i++) {
+          const c = cells[i];
+          const col = i % COLS;
+          const row = Math.floor(i / COLS);
+          const x = col * CELL;
+          const y = row * CELL;
+
+          const mdx = x + CELL / 2 - mouseX;
+          const mdy = y + CELL / 2 - mouseY;
+          const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+          const mouseEffect = mouseOnCanvas ? Math.max(0, 1 - mdist / MOUSE_RADIUS) : 0;
+
+          let ch, bright;
+
+          if (phase === 'noise') {
+            c.flipT -= dt;
+            if (c.flipT <= 0) { c.ch = rndNoise(); c.flipT = c.flipI; }
+            ch = c.ch;
+            bright = NOISE_B;
+
+          } else if (phase === 'chaos') {
+            c.flipT -= dt;
+            if (c.flipT <= 0) { c.ch = rndNoise(); c.flipT = 40 + Math.random() * 80; }
+            ch = c.ch;
+            const pt = phaseElapsed / CHAOS_DUR;
+            const peakB = 180;
+            bright = NOISE_B + (peakB - NOISE_B) * Math.sin(pt * Math.PI);
+
+          } else {
+            if (phase === 'face' || (phase === 'car' && c.hasFace)) {
+              const elapsed = phaseElapsed - c.faceDelay;
+              if (elapsed > 0) {
+                c.faceProgress = Math.min(c.faceProgress + (dt / 500), 1);
+              }
+            }
+
+            const carLocalP = phase === 'car'
+              ? Math.max(0, Math.min((scrollP - c.carOffset) / 0.45, 1))
+              : 0;
+            const carEased = easeInOut(carLocalP);
+
+            const isFaceCell = c.hasFace;
+            const isCarCell = c.hasCar;
+            const fp = easeOut3(c.faceProgress);
+
+            if (carEased > 0) {
+              if (isCarCell) {
+                const fromB = isFaceCell ? c.faceBright : NOISE_B;
+                bright = fromB + (c.carBright - fromB) * carEased;
+
+                if (carEased < 0.6) {
+                  c.flipT -= dt;
+                  if (c.flipT <= 0) { c.ch = rndNoise(); c.flipT = 40 + Math.random() * 100; }
+                  ch = c.ch;
+                } else {
+                  c.flipT -= dt;
+                  if (c.flipT <= 0) { c.ch = rndNoise(); c.flipT = 800 + Math.random() * 1800; }
+                  ch = (c.ch !== c.carChar && Math.random() < 0.04) ? c.ch : c.carChar;
+                }
+              } else if (isFaceCell) {
+                bright = c.faceBright * fp * (1 - carEased) + NOISE_B * carEased;
+                ch = carEased < 0.5 ? c.faceChar : c.ch;
+                c.flipT -= dt;
+                if (c.flipT <= 0) { c.ch = rndNoise(); c.flipT = 150 + Math.random() * 300; }
+              } else {
+                c.flipT -= dt;
+                if (c.flipT <= 0) { c.ch = rndNoise(); c.flipT = c.flipI; }
+                ch = c.ch; bright = NOISE_B;
+              }
+            } else {
+              if (isFaceCell) {
+                if (fp < 0.35) {
+                  c.flipT -= dt;
+                  const flipRate = 60 + (1 - fp) * 200;
+                  if (c.flipT <= 0) { c.ch = rndNoise(); c.flipT = flipRate; }
+                  ch = c.ch;
+                  bright = NOISE_B + (c.faceBright - NOISE_B) * (fp / 0.35) * 0.7;
+                } else if (fp < 0.7) {
+                  c.flipT -= dt;
+                  if (c.flipT <= 0) { c.ch = rndNoise(); c.flipT = 80 + Math.random() * 120; }
+                  ch = Math.random() < (fp - 0.35) / 0.35 ? c.faceChar : c.ch;
+                  bright = NOISE_B + (c.faceBright - NOISE_B) * easeOut3((fp - 0.35) / 0.65);
+                } else {
+                  c.flipT -= dt;
+                  if (c.flipT <= 0) { c.ch = rndNoise(); c.flipT = 1200 + Math.random() * 2000; }
+                  ch = c.ch === c.faceChar ? c.faceChar : (Math.random() < 0.05 ? c.ch : c.faceChar);
+                  bright = c.faceBright;
+                }
+              } else {
+                c.flipT -= dt;
+                if (c.flipT <= 0) { c.ch = rndNoise(); c.flipT = c.flipI; }
+                ch = c.ch;
+                bright = NOISE_B;
+              }
+            }
+          }
+
+          if (mouseEffect > 0) {
+            const mBoost = mouseEffect * MOUSE_INTENSITY;
+            bright = Math.min(bright + mBoost, 255);
+
+            if (mouseEffect > 0.15) {
+              c.flipT -= dt * (mouseEffect * 8);
+              if (c.flipT <= 0) {
+                c.ch = rndNoise();
+                c.flipT = 20 + Math.random() * 60;
+              }
+              if (mouseEffect > 0.5) ch = rndNoise();
+            }
+          }
+
+          const b = Math.max(0, Math.min(Math.floor(bright), 255));
+          ctx.fillStyle = `rgb(${b},${b},${b})`;
+          ctx.fillText(ch, x, y);
+        }
+      }
+
+      function loadImg(src) {
+        return new Promise((res) => {
+          const img = new Image();
+          img.onload = () => res(img);
+          img.onerror = () => res(null);
+          img.src = src + '?t=' + Date.now();
+        });
+      }
+
+      async function boot() {
+        buildGrid();
+        label.textContent = '// noise';
+        last = performance.now();
+        requestAnimationFrame(loop);
+
+        const [fi, ci] = await Promise.all([loadImg('face.png'), loadImg('car.png')]);
+        if (fi && ci) {
+          faceImgRef = fi; carImgRef = ci;
+          rebuildMaps();
+        } else {
+          faceMap = makeFallbackCircle();
+          carMap = makeFallbackRect();
+          fakeMapsToCells();
+        }
+        assetsOK = true;
+      }
+
+      function makeFallbackCircle() {
+        const m = new Float32Array(COLS * ROWS);
+        const cx = COLS / 2, cy = ROWS / 2, r = Math.min(COLS, ROWS) * 0.38;
+        for (let row = 0; row < ROWS; row++) for (let col = 0; col < COLS; col++) {
+          const d = Math.hypot(col - cx, row - cy);
+          if (d < r) m[row * COLS + col] = 1 - (d / r) * 0.5;
+        }
+        return m;
+      }
+      function makeFallbackRect() {
+        const m = new Float32Array(COLS * ROWS);
+        const x0 = Math.floor(COLS * .1), x1 = Math.floor(COLS * .9);
+        const y0 = Math.floor(ROWS * .3), y1 = Math.floor(ROWS * .7);
+        for (let row = y0; row < y1; row++) for (let col = x0; col < x1; col++) m[row * COLS + col] = 0.8;
+        return m;
+      }
+      function fakeMapsToCells() {
+        cells.forEach((c, i) => {
+          const fb = faceMap[i], cb = carMap[i];
+          c.hasFace = fb > .06; c.faceBright = FACE_LO + fb * (FACE_HI - FACE_LO); c.faceChar = brightToChar(fb);
+          c.hasCar = cb > .06; c.carBright = FACE_LO + cb * (FACE_HI - FACE_LO); c.carChar = brightToChar(cb);
+        });
+      }
+
+      boot();
+
+      const fades = document.querySelectorAll('.fade-in');
+      const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: .12 });
+      fades.forEach(el => io.observe(el));
+
+    })();
+  </script>
+</body>
+
+</html>
