@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ratna Koushik Appasani — Software Engineer</title>
+  <title>Ratna Koushik Appasani — Software Developer</title>
   <meta name="description"
-    content="Portfolio of Ratna Koushik Appasani – Software Engineer, Designer, and Porsche enthusiast." />
+    content="Portfolio of Ratna Koushik Appasani, a software developer building mobile apps, AI tools, and workflow systems with a strong product eye." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap"
@@ -183,7 +182,18 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       gap: 8px;
+      width: max-content;
+      max-width: calc(100vw - 48px);
+      padding: 12px 18px 14px;
+      background: rgba(0, 0, 0, 0.58);
+      border: 1px solid rgba(200, 255, 0, 0.18);
+      border-radius: 999px;
+      box-sizing: border-box;
+      box-shadow: 0 0 28px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(6px);
+      text-align: center;
       transition: opacity 0.6s;
       pointer-events: none;
       z-index: 10;
@@ -193,14 +203,22 @@
       font-family: 'Space Mono', monospace;
       font-size: 10px;
       letter-spacing: 3px;
-      color: #3a3a3a;
+      color: rgba(240, 240, 240, 0.92);
+      text-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
       text-transform: uppercase;
+    }
+
+    #scroll-hint span:last-child {
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--accent);
+      opacity: 0.9;
     }
 
     .arrow {
       width: 1px;
-      height: 36px;
-      background: linear-gradient(to bottom, #3a3a3a, transparent);
+      height: 42px;
+      background: linear-gradient(to bottom, rgba(240, 240, 240, 0.9), transparent);
       animation: pulse 1.8s ease-in-out infinite;
     }
 
@@ -228,6 +246,34 @@
       pointer-events: none;
       z-index: 10;
       transition: color 0.8s;
+    }
+
+    #car-quote {
+      position: absolute;
+      left: 50%;
+      bottom: 88px;
+      width: max-content;
+      max-width: calc(100vw - 48px);
+      margin: 0;
+      padding: 14px 18px;
+      box-sizing: border-box;
+      transform: translateX(-50%) translateY(18px);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 9;
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(11px, 1vw, 13px);
+      line-height: 1.8;
+      letter-spacing: 1.4px;
+      color: rgba(245, 245, 245, 0.88);
+      text-align: center;
+      white-space: pre-wrap;
+      text-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.38);
+      border: 1px solid rgba(200, 255, 0, 0.14);
+      border-radius: 18px;
+      box-shadow: 0 0 24px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(6px);
     }
 
     .section {
@@ -453,6 +499,59 @@
       line-height: 1.7;
     }
 
+    .recent-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .recent-card {
+      background: var(--dark);
+      border: 1px solid #181818;
+      border-radius: 10px;
+      padding: 32px;
+      transition: all 0.3s;
+    }
+
+    .recent-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-6px);
+    }
+
+    .recent-card .eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .recent-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .recent-card p {
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .recent-card a {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: #555;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .recent-card a:hover {
+      color: var(--accent);
+    }
+
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -495,6 +594,7 @@
       font-size: 0.9rem;
       color: var(--gray);
       margin-bottom: 20px;
+      line-height: 1.7;
     }
 
     .project-card .ctag {
@@ -652,6 +752,15 @@
         font-size: 2.5rem;
       }
 
+      #car-quote {
+        bottom: 96px;
+        max-width: calc(100vw - 32px);
+        padding: 12px 14px;
+        font-size: 10px;
+        line-height: 1.7;
+        letter-spacing: 1px;
+      }
+
       #about {
         grid-template-columns: 1fr;
         gap: 48px;
@@ -685,21 +794,26 @@
         <div id="text-content">
           <div class="name" data-value="RATNA">RATNA</div>
           <div class="name" data-value="KOUSHIK">KOUSHIK</div>
-          <div class="role">SOFTWARE ENGINEER</div>
-          <div class="role">DESIGNER</div>
-          <div class="location">TRINITY WESTERN UNIVERSITY</div>
+          <div class="role">SOFTWARE DEVELOPER</div>
+          <div class="role">PRODUCT-MINDED BUILDER</div>
+          <div class="location">TRINITY WESTERN UNIVERSITY · 2027</div>
           <div class="links">
             <a href="https://github.com/itsgnex" target="_blank">GITHUB</a>
             <a href="https://www.linkedin.com/in/ratnakoushikappasani/" target="_blank">LINKEDIN</a>
+            <a href="Ratna_Resume.pdf" target="_blank">RESUME</a>
             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ratnakoushikappasani@gmail.com"
               target="_blank">EMAIL</a>
           </div>
         </div>
       </div>
       <div id="scroll-hint">
-        <span>Scroll</span>
+        <span>Scroll To Explore</span>
+        <span>face &gt; work &gt; github</span>
         <div class="arrow"></div>
       </div>
+      <pre id="car-quote">"Built to be reliable.
+Tuned to be precise.
+Like a Porsche 911."</pre>
       <div id="phase-label">// initialising</div>
     </div>
   </div>
@@ -710,24 +824,26 @@
     <div class="about-text">
       <div class="tag">// About</div>
       <h2>Ratna Koushik<br><span class="hl">Appasani</span></h2>
-      <div class="subtitle">SOFTWARE ENGINEER & DESIGNER</div>
-      <p>I craft elegant digital experiences and robust software systems. Currently studying Computer Science at Trinity
-        Western University, I'm passionate about building products that blend technical excellence with thoughtful
-        design.</p>
-      <p>When I'm not coding, you'll find me behind the wheel of a Porsche 911 or shooting hoops on the basketball
-        court.</p>
+      <div class="subtitle">SOFTWARE FOR REAL-WORLD WORKFLOWS</div>
+      <p>I build software that turns messy real-world workflows into clean, useful digital systems. I'm studying
+        Computer Science at Trinity Western University, and I like working where dependable engineering, product
+        thinking, and interface design meet.</p>
+      <p>A lot of my best work lives in that space: mobile tools, internal platforms, and privacy-first AI experiences
+        that need to feel simple for the user and solid underneath. My background in automation and robotics still
+        shapes how I build, and outside of code I'm usually around Porsche design, hiking, or homelab projects,
+        including building my own NAS.</p>
       <div class="stats">
-        <div class="stat">
-          <div class="number">4+</div>
-          <div class="label">Projects</div>
-        </div>
         <div class="stat">
           <div class="number">2</div>
           <div class="label">Internships</div>
         </div>
         <div class="stat">
+          <div class="number">2</div>
+          <div class="label">Degrees</div>
+        </div>
+        <div class="stat">
           <div class="number">2027</div>
-          <div class="label">Graduation</div>
+          <div class="label">B.Sc. Grad</div>
         </div>
       </div>
     </div>
@@ -736,9 +852,28 @@
     </div>
   </section>
 
+  <section id="education" class="section fade-in">
+    <div class="tag">// Education</div>
+    <h2>Education</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Bachelor of Science in Computing Science</h3>
+        <div class="company">Trinity Western University — Langley, BC · 2023 to 2027</div>
+        <p>Currently studying computer science with a practical focus on software systems, mobile development,
+          backend APIs, and product-minded engineering.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Diploma in Automation and Robotic Engineering</h3>
+        <div class="company">Central Institution of Tool Design — Telangana, India · 2020 to 2023</div>
+        <p>Built my foundation in engineering systems, automation, and structured problem-solving, which still shapes
+          how I approach debugging, architecture, and real-world software workflows.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="skills" class="section fade-in">
     <div class="tag">// Skills</div>
-    <h2>Tech Stack</h2>
+    <h2>How I Build</h2>
     <div class="skills-grid">
       <div class="skill-category">
         <h3><span>//</span> Languages</h3>
@@ -748,40 +883,57 @@
           <span class="skill-tag">JavaScript</span>
           <span class="skill-tag">TypeScript</span>
           <span class="skill-tag">Dart</span>
-          <span class="skill-tag">HTML/CSS</span>
+          <span class="skill-tag">XML</span>
+          <span class="skill-tag">Rust</span>
+          <span class="skill-tag">C</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">Julia</span>
+          <span class="skill-tag">Perl</span>
+          <span class="skill-tag">Fortran</span>
+          <span class="skill-tag">HTML / CSS</span>
         </div>
       </div>
       <div class="skill-category">
-        <h3><span>//</span> Frameworks</h3>
+        <h3><span>//</span> Frameworks & Platforms</h3>
         <div class="skill-tags">
           <span class="skill-tag">React</span>
-          <span class="skill-tag">Next.js</span>
-          <span class="skill-tag">Node.js</span>
-          <span class="skill-tag">Three.js</span>
-          <span class="skill-tag">FastAPI</span>
+          <span class="skill-tag">React Native</span>
           <span class="skill-tag">Flutter</span>
+          <span class="skill-tag">Flask</span>
+          <span class="skill-tag">FastAPI</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Firebase Auth</span>
+          <span class="skill-tag">Firestore</span>
+          <span class="skill-tag">Android SDK</span>
+          <span class="skill-tag">Provider</span>
         </div>
       </div>
       <div class="skill-category">
         <h3><span>//</span> Tools</h3>
         <div class="skill-tags">
-          <span class="skill-tag">VS Code</span>
-          <span class="skill-tag">Figma</span>
           <span class="skill-tag">Git</span>
           <span class="skill-tag">GitHub</span>
-          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Android Studio</span>
+          <span class="skill-tag">VS Code</span>
           <span class="skill-tag">Postman</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Markdown</span>
         </div>
       </div>
       <div class="skill-category">
         <h3><span>//</span> Concepts</h3>
         <div class="skill-tags">
-          <span class="skill-tag">Full-Stack Dev</span>
-          <span class="skill-tag">UI/UX Design</span>
-          <span class="skill-tag">Agile</span>
           <span class="skill-tag">REST APIs</span>
-          <span class="skill-tag">AI/ML</span>
-          <span class="skill-tag">Whisper</span>
+          <span class="skill-tag">Backend API Design</span>
+          <span class="skill-tag">HTTP Services</span>
+          <span class="skill-tag">UI Systems</span>
+          <span class="skill-tag">Debugging</span>
+          <span class="skill-tag">Profiling</span>
+          <span class="skill-tag">Agile Collaboration</span>
+          <span class="skill-tag">Version Control</span>
+          <span class="skill-tag">Rapid Prototyping</span>
+          <span class="skill-tag">Offline Sync</span>
+          <span class="skill-tag">Local AI</span>
         </div>
       </div>
     </div>
@@ -792,66 +944,217 @@
     <h2>Where I've <span class="hl">Worked</span></h2>
     <div class="timeline">
       <div class="timeline-item">
-        <h3>Software Engineering Intern</h3>
-        <div class="company">Vbrick Systems — 2024</div>
-        <p>Developed and maintained enterprise video platform features using Java and Spring Boot. Collaborated with
-          cross-functional teams to deliver scalable solutions serving millions of users.</p>
+        <h3>App Development Intern</h3>
+        <div class="company">Acsestech — Apr to Aug 2025</div>
+        <p>Worked inside a Git-based team workflow to ship React Native features tied to REST APIs and real user flows.
+          I focused on reusable component patterns, cross-device testing, and the debugging needed to keep the product
+          stable when it left the simulator and hit real phones.</p>
       </div>
       <div class="timeline-item">
-        <h3>Student Programmer</h3>
-        <div class="company">Trinity Western University — 2023</div>
-        <p>Provided technical support and developed internal tools for the university community. Built applications to
-          streamline administrative processes and improve student experience.</p>
+        <h3>App Development Intern</h3>
+        <div class="company">Verzeo x Immensphere — Jun to Jul 2022</div>
+        <p>Built and refined Android UI in Java/XML, improved responsive screens, and used Android Studio profiling
+          tools to track down performance and stability issues. I also contributed reusable UI components and worked in
+          an Agile-style environment that emphasized clean Git habits and fast iteration.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements" class="section fade-in">
+    <div class="tag">// Recent</div>
+    <h2>Recent <span class="hl">Achievements</span></h2>
+    <div class="recent-grid">
+      <div class="recent-card">
+        <div class="eyebrow">Latest Post · UFV Cyber Defense & AI Hackathon</div>
+        <h3>1st Place in the Cyber Strike Challenge</h3>
+        <p>I recently shared a milestone from the UFV School of Computing Cyber Defense &amp; AI Hackathon, where my
+          team won 1st place in the Cyber Strike Challenge. It was the kind of high-pressure environment I enjoy most:
+          real-world security problems, fast collaboration, clear communication, and technical decision-making under
+          time constraints.</p>
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7447849592022368257/?originTrackingId=a7OdvS9q4vJsN5iB28EP%2Fg%3D%3D"
+          target="_blank">View Post →</a>
+      </div>
+      <div class="recent-card">
+        <div class="eyebrow">Earlier Post · TWU MET Club Hackathon</div>
+        <h3>Led a Prompt Engineering Workshop at TWU</h3>
+        <p>I also recently shared my experience helping with Trinity Western University's first hackathon through the
+          MET Club, where I led a prompt engineering workshop and supported a live chess-bot challenge with the TWU
+          Chess Club. It was a strong blend of teaching, collaboration, and practical AI work in a builder-focused
+          setting.</p>
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7444828887303385088/?originTrackingId=ca6ejJrcyKDWGOoF8%2BJ3lg%3D%3D"
+          target="_blank">View Post →</a>
       </div>
     </div>
   </section>
 
   <section id="projects" class="section fade-in">
     <div class="tag">// Projects</div>
-    <h2>Selected <span class="hl">Work</span></h2>
+    <h2>Work on <span class="hl">GitHub</span></h2>
     <div class="projects-grid">
       <div class="project-card">
         <div class="number">01</div>
-        <h3>File Reader</h3>
-        <p>Local-first audio transcription and summarization tool using Whisper AI. Supports MP3, WAV, M4A, OGG with Q&A
-          capabilities.</p>
-        <span class="ctag">Python</span>
-        <span class="ctag">FastAPI</span>
+        <h3>Cipher BC</h3>
+        <p>Privacy-first AI assistant for BC regulations that turns legal PDFs into fast, context-aware Q&amp;A. Built
+          with Flask, intent-aware prompting, and in-memory document handling.</p>
+        <span class="ctag">Flask</span>
+        <span class="ctag">PDF Q&amp;A</span>
+        <span class="ctag">Privacy-First AI</span>
         <div class="links">
-          <a href="https://github.com/itsgnex/file-reader" target="_blank">View Code →</a>
+          <a href="https://github.com/itsgnex/nw-hackathon-2026" target="_blank">View Repo →</a>
         </div>
       </div>
       <div class="project-card">
         <div class="number">02</div>
-        <h3>AI Project</h3>
-        <p>AI group class project exploring machine learning concepts and implementations for practical applications.
-        </p>
-        <span class="ctag">Python</span>
-        <span class="ctag">AI/ML</span>
+        <h3>FoodLink Donation Intake</h3>
+        <p>Digital donation logging system for FoodLink Society that replaced a paper workflow with offline sync,
+          editable entries, dashboards, reporting, and audit tools in Firebase and Firestore.</p>
+        <span class="ctag">Firebase</span>
+        <span class="ctag">Firestore</span>
+        <span class="ctag">Offline Sync</span>
         <div class="links">
-          <a href="https://github.com/itsgnex/AI-Project-2" target="_blank">View Code →</a>
+          <a href="https://github.com/itsgnex/Donation-Intake-tracker" target="_blank">View Repo →</a>
         </div>
       </div>
       <div class="project-card">
         <div class="number">03</div>
-        <h3>TWU Hackathon Platform</h3>
-        <p>Neural network backend for hosting and pitting chess bots against each other. Part of the TWU 2026 hackathon
-          project.</p>
-        <span class="ctag">Python</span>
-        <span class="ctag">Neural Networks</span>
+        <h3>Ghost Helper</h3>
+        <p>Privacy-first browser extension that lets users chat with a local Ollama model about the active page and its
+          images while keeping context on-device.</p>
+        <span class="ctag">Browser Extension</span>
+        <span class="ctag">Ollama</span>
+        <span class="ctag">Local AI</span>
         <div class="links">
-          <a href="https://github.com/itsgnex/TWU-Hackathon-2026-Neural-Network" target="_blank">View Code →</a>
+          <a href="https://github.com/itsgnex/Ghost-helper" target="_blank">View Repo →</a>
         </div>
       </div>
       <div class="project-card">
         <div class="number">04</div>
-        <h3>Donation Tracker</h3>
-        <p>Cross-platform mobile app for tracking donation intake and management. Built with Flutter for iOS and
-          Android.</p>
-        <span class="ctag">Dart</span>
+        <h3>Poki Buddy</h3>
+        <p>Gamified shared-living app for chores, bills, and routines with XP, streaks, rewards, and playful
+          accountability loops.</p>
         <span class="ctag">Flutter</span>
+        <span class="ctag">Firebase</span>
+        <span class="ctag">Gamified UX</span>
         <div class="links">
-          <a href="https://github.com/itsgnex/Donation-Intake-tracker" target="_blank">View Code →</a>
+          <a href="https://github.com/itsgnex/nw-hackathon-2025" target="_blank">View Repo →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="number">05</div>
+        <h3>File Reader</h3>
+        <p>Local-first audio app for transcription, translation, summaries, and Q&amp;A, powered by Whisper without
+          sending recordings to external services.</p>
+        <span class="ctag">FastAPI</span>
+        <span class="ctag">Whisper</span>
+        <span class="ctag">Local-First</span>
+        <div class="links">
+          <a href="https://github.com/itsgnex/file-reader" target="_blank">View Repo →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="number">06</div>
+        <h3>K-mer ML Classifier</h3>
+        <p>Machine learning project for classifying Escherichia species from 16S rRNA sequences using alignment-free
+          k-mer features.</p>
+        <span class="ctag">Python</span>
+        <span class="ctag">ML</span>
+        <span class="ctag">Bioinformatics</span>
+        <div class="links">
+          <a href="https://github.com/itsgnex/kmer-ml-classifier" target="_blank">View Repo →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="number">07</div>
+        <h3>Sky Ring Flyer</h3>
+        <p>A-Frame VR game where a paper plane guides dreams through clouds and glowing rings, built with mobile VR,
+          gaze controls, and a story mode.</p>
+        <span class="ctag">A-Frame</span>
+        <span class="ctag">WebVR</span>
+        <span class="ctag">Game Design</span>
+        <div class="links">
+          <a href="https://github.com/itsgnex/IM-Individual-Project" target="_blank">View Repo →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="number">08</div>
+        <h3>Solar System Simulation</h3>
+        <p>Interactive A-Frame solar system exploring orbit animation, lighting, textured planets, and navigable 3D
+          space.</p>
+        <span class="ctag">A-Frame</span>
+        <span class="ctag">WebVR</span>
+        <span class="ctag">3D Interaction</span>
+        <div class="links">
+          <a href="https://github.com/itsgnex/IM-Assigment-7" target="_blank">View Repo →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="number">09</div>
+        <h3>Chess Bot Tournament Backend</h3>
+        <p>Python backend for hosting chess-bot tournaments, letting participants plug in bots and compete in a
+          controlled environment.</p>
+        <span class="ctag">Python</span>
+        <span class="ctag">Chess</span>
+        <span class="ctag">Backend</span>
+        <div class="links">
+          <a href="https://github.com/itsgnex/TWU-Hackathon-2026-Neural-Network" target="_blank">View Repo →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="number">10</div>
+        <h3>AI Project 2</h3>
+        <p>Early Python-based AI course project exploring model logic, automation, and fast iteration through small
+          experiments.</p>
+        <span class="ctag">Python</span>
+        <span class="ctag">AI/ML</span>
+        <span class="ctag">Course Project</span>
+        <div class="links">
+          <a href="https://github.com/itsgnex/AI-Project-2" target="_blank">View Repo →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="number">11</div>
+        <h3>PrivacySense</h3>
+        <p>Early privacy-centered product concept around safer digital experiences and stronger user control.</p>
+        <span class="ctag">Privacy</span>
+        <span class="ctag">Concept</span>
+        <span class="ctag">In Progress</span>
+        <div class="links">
+          <a href="https://github.com/itsgnex/PrivacySense" target="_blank">View Repo →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="number">12</div>
+        <h3>AI Therapist</h3>
+        <p>Early conversational AI concept exploring supportive UX and more thoughtful human-centered interfaces.</p>
+        <span class="ctag">AI</span>
+        <span class="ctag">Concept</span>
+        <span class="ctag">In Progress</span>
+        <div class="links">
+          <a href="https://github.com/itsgnex/ai-therapist" target="_blank">View Repo →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="number">13</div>
+        <h3>Ratna Portfolio</h3>
+        <p>Earlier static portfolio site built with vanilla HTML, CSS, and JavaScript to present projects and client
+          work.</p>
+        <span class="ctag">HTML / CSS</span>
+        <span class="ctag">JavaScript</span>
+        <span class="ctag">Portfolio</span>
+        <div class="links">
+          <a href="https://github.com/itsgnex/ratna-portfolio" target="_blank">View Repo →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="number">14</div>
+        <h3>Ratna Portfolio 2.0</h3>
+        <p>Current portfolio direction exploring ASCII art, scroll-driven transitions, and a more distinctive static web
+          identity.</p>
+        <span class="ctag">HTML / CSS</span>
+        <span class="ctag">JavaScript</span>
+        <span class="ctag">ASCII UI</span>
+        <div class="links">
+          <a href="https://github.com/itsgnex/ratna-portfolio-2.0" target="_blank">View Repo →</a>
         </div>
       </div>
     </div>
@@ -866,16 +1169,20 @@
         <span>Porsche 911</span>
       </div>
       <div class="interest-item">
-        <div class="interest-icon">🏀</div>
-        <span>Basketball</span>
+        <div class="interest-icon">🖥️</div>
+        <span>Homelabs</span>
+      </div>
+      <div class="interest-item">
+        <div class="interest-icon">💾</div>
+        <span>DIY NAS</span>
+      </div>
+      <div class="interest-item">
+        <div class="interest-icon">🥾</div>
+        <span>Hiking</span>
       </div>
       <div class="interest-item">
         <div class="interest-icon">🎨</div>
         <span>Design</span>
-      </div>
-      <div class="interest-item">
-        <div class="interest-icon">🚀</div>
-        <span>Startups</span>
       </div>
     </div>
   </section>
@@ -883,11 +1190,13 @@
   <section id="contact" class="section fade-in">
     <div class="tag">// Contact</div>
     <h2>Let's <span class="hl">Connect</span></h2>
-    <p>Whether it's a startup idea, a side project, or just chatting about tech and cars — I'm always open.</p>
+    <p>If you're hiring, building something useful, or just want to talk about product, software, AI, or design, I'd
+      be glad to connect.</p>
     <div class="contact-links">
       <a class="btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=ratnakoushikappasani@gmail.com"
-        target="_blank">Say Hello</a>
-      <a class="btn btn-outline" href="https://linkedin.com/in/ratnakoushik" target="_blank">LinkedIn</a>
+        target="_blank">Send Email</a>
+      <a class="btn btn-outline" href="Ratna_Resume.pdf" download>Download Resume</a>
+      <a class="btn btn-outline" href="https://www.linkedin.com/in/ratnakoushikappasani/" target="_blank">LinkedIn</a>
       <a class="btn btn-outline" href="https://github.com/itsgnex" target="_blank">GitHub</a>
     </div>
   </section>
@@ -919,6 +1228,7 @@
       const canvas = document.getElementById('main-canvas');
       const ctx = canvas.getContext('2d');
       const hint = document.getElementById('scroll-hint');
+      const carQuote = document.getElementById('car-quote');
       const label = document.getElementById('phase-label');
       let W = 0, H = 0, COLS = 0, ROWS = 0;
 
@@ -1079,6 +1389,8 @@
             label.textContent = '// rendering face';
           }
         }
+
+        updateCarQuote();
       }
 
       window.addEventListener('scroll', onScroll, { passive: true });
@@ -1086,6 +1398,15 @@
 
       function easeOut3(t) { return 1 - Math.pow(1 - t, 3); }
       function easeInOut(t) { return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+
+      function updateCarQuote() {
+        const quoteP = phase === 'car'
+          ? Math.max(0, Math.min((scrollP - 0.05) / 0.18, 1))
+          : 0;
+        const eased = easeOut3(quoteP);
+        carQuote.style.opacity = eased.toFixed(3);
+        carQuote.style.transform = `translateX(-50%) translateY(${18 - eased * 18}px)`;
+      }
 
       let last = 0;
 
@@ -1097,6 +1418,7 @@
 
         if (phase === 'noise' && assetsOK && phaseElapsed >= NOISE_DUR) startChaos();
         if (phase === 'chaos' && phaseElapsed >= CHAOS_DUR) startFace();
+        updateCarQuote();
 
         ctx.fillStyle = '#000';
         ctx.fillRect(0, 0, W, H);
