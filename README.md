@@ -1,39 +1,61 @@
 # Ratna Koushik Portfolio
 
-ASCII art portfolio with scroll-driven animations.
+Personal portfolio site for Ratna Koushik Appasani.
 
-## To-Do List
+This is a static single-page portfolio built with vanilla HTML, CSS, and JavaScript. The site keeps a black neon terminal aesthetic and uses a custom ASCII animation that transitions from a face render into a Porsche 911 as the user scrolls.
 
-- [ ] Tune my details (update email, links, resume content)
-- [ ] Choose better car picture (current one needs improvement)
-- [ ] Work on load animation (tune timing)
-- [ ] Make the starting scroll hint more visible/obvious
-- [ ] Test on mobile devices
-- [ ] Add more projects from GitHub
-- [ ] Update project descriptions with real details
-- [ ] Add LinkedIn link verification
-- [ ] Optimize image sizes for faster loading
+## Overview
 
-## Setup
+- custom canvas-based ASCII hero animation
+- face to Porsche 911 scroll transition
+- recruiter-focused portfolio content and project highlights
+- sections for About, Education, Skills, Experience, Achievements, GitHub work, Interests, and Contact
+- resume download built into the page
+- responsive layout with no framework or build step
 
-Open `index.html` in a browser, or serve locally:
+## Tech Stack
+
+- HTML
+- CSS
+- Vanilla JavaScript
+- Canvas API
+- Google Fonts (`Inter` and `Space Mono`)
+
+## Run Locally
+
+Open `index.html` directly in a browser, or serve the folder locally:
+
 ```bash
-cd TRY
 python3 -m http.server 8000
 ```
+
 Then visit `http://localhost:8000`
 
-## Files
+## Project Structure
 
-- `index.html` - Main portfolio page
-- `face.png` - Your photo for ASCII art
-- `car.png` - Porsche 911 image for scroll transition
-- `Ratna_Resume.pdf` - Your resume reference
+- `index.html` - complete site markup, styling, and animation logic
+- `face.png` - source image for the ASCII face render
+- `car.png` - source image for the Porsche transition
+- `Ratna_Resume.pdf` - downloadable resume used by the site
+- `face_1.png` - alternate image asset
+- `face_2.png` - alternate image asset
 
-## Features
+## Current Site Highlights
 
-- ASCII art face morphing animation
-- Scroll-driven transition to Porsche 911
-- Split-screen hero layout
-- Responsive design
-- Fade-in section animations
+- hero overlay with portfolio links and resume access
+- ASCII quote that fades in with the Porsche phase
+- education and experience sections aligned to current resume details
+- recent achievements section linked to LinkedIn posts
+- expanded GitHub projects section with portfolio and experimental work
+- beyond-code section covering Porsche design, hiking, homelabs, and a DIY NAS
+
+## Editing Notes
+
+- most content updates can be made directly in the HTML sections near the middle of `index.html`
+- animation behavior lives in the script block at the bottom of `index.html`
+- the hero animation depends on existing IDs and selectors, so those should be preserved when editing
+- this project can be deployed to any static host such as GitHub Pages, Netlify, or Vercel
+
+## License
+
+This repository is for personal portfolio use.
