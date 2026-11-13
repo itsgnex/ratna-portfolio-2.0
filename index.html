@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ratna Koushik Appasani — Software Developer</title>
   <meta name="description"
-    content="Portfolio of Ratna Koushik Appasani, a software developer building mobile apps, AI tools, and workflow systems with a strong product eye." />
+    content="Ratna Koushik Appasani — software developer, undergraduate researcher, web developer, and MET Club President building practical systems for real-world work." />
+  <meta property="og:title" content="Ratna Koushik Appasani — Software Developer & Researcher" />
+  <meta property="og:description" content="Production software, client websites, applied AI, and first-author research." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ratnakoushikappasani.com/" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap"
@@ -77,7 +82,7 @@
     }
 
     #text-content {
-      max-width: 500px;
+      max-width: 430px;
       pointer-events: auto;
       position: relative;
       z-index: 100;
@@ -131,8 +136,8 @@
       font-family: 'Space Mono', monospace;
       font-size: clamp(0.8rem, 1.2vw, 1.2rem);
       color: var(--accent);
-      letter-spacing: 4px;
-      margin-bottom: 8px;
+      letter-spacing: 2.4px;
+      margin-bottom: 5px;
     }
 
     #text-content .location {
@@ -141,28 +146,29 @@
       color: var(--gray);
       letter-spacing: 3px;
       margin-top: 16px;
-      margin-bottom: 40px;
+      margin-bottom: 18px;
     }
 
     #text-content .links {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px;
       pointer-events: auto;
     }
 
     #text-content .links a {
       font-family: 'Space Mono', monospace;
       font-size: 12px;
-      color: var(--gray);
+      color: var(--white);
       text-decoration: none;
       letter-spacing: 2px;
       transition: color 0.3s;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 12px;
-      padding: 8px;
-      border: 1px solid transparent;
+      padding: 8px 10px;
+      border: 1px solid #292929;
     }
 
     #text-content .links a:hover {
@@ -178,18 +184,21 @@
     #scroll-hint {
       position: absolute;
       bottom: 28px;
-      left: 36px;
-      transform: none;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
       gap: 5px;
       width: max-content;
       max-width: calc(100vw - 48px);
-      padding: 0 0 0 14px;
-      border-left: 1px solid rgba(200, 255, 0, 0.45);
-      text-align: left;
+      padding: 10px 18px;
+      border: 1px solid rgba(200, 255, 0, 0.28);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(10px);
+      text-align: center;
       transition: opacity 0.6s;
       pointer-events: none;
       z-index: 10;
@@ -755,6 +764,132 @@
       letter-spacing: 2px;
     }
 
+    /* 2026 portfolio pass: keep the original canvas identity, add a clearer recruiter path. */
+    .hero-intro {
+      display: none;
+    }
+
+    .hero-research {
+      display: inline-block;
+      margin: 0 0 18px;
+      color: var(--accent);
+      font: 11px 'Space Mono', monospace;
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+
+    .hero-research:hover { text-decoration: underline; }
+
+    .portfolio-section { position: relative; z-index: 2; }
+    .section-kicker { color: var(--accent); font: 10px 'Space Mono', monospace; letter-spacing: 3px; text-transform: uppercase; }
+    .section-lede { max-width: 680px; color: var(--gray); font-size: 1.05rem; margin: -24px 0 48px; }
+    .site-nav { position: sticky; top: 0; z-index: 20; display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; padding: 14px 24px; background: rgba(0,0,0,.88); border-bottom: 1px solid #171717; backdrop-filter: blur(14px); }
+    .site-nav a { color: #888; font: 10px 'Space Mono', monospace; letter-spacing: 1.5px; text-decoration: none; text-transform: uppercase; }
+    .site-nav a:hover { color: var(--accent); }
+    .featured-grid { display: grid; gap: 24px; }
+    .feature-card {
+      display: grid; grid-template-columns: minmax(240px, .8fr) 1.2fr; gap: 36px; align-items: stretch;
+      padding: 24px; border: 1px solid #1e1e1e; background: linear-gradient(135deg, #0b0b0b, #050505);
+      transition: border-color .3s, transform .3s;
+    }
+    .feature-card:hover { border-color: rgba(200,255,0,.55); transform: translateY(-3px); }
+    .feature-card:nth-child(even) { grid-template-columns: 1.2fr minmax(240px, .8fr); }
+    .feature-card:nth-child(even) .feature-visual { order: 2; }
+    .feature-card h3 { font-size: clamp(1.5rem, 3vw, 2.4rem); margin: 8px 0 12px; }
+    .feature-card p { color: #aaa; max-width: 680px; }
+    .feature-meta { color: var(--accent); font: 10px 'Space Mono', monospace; letter-spacing: 1.5px; text-transform: uppercase; }
+    .feature-visual {
+      min-height: 230px; display: grid; place-items: center; padding: 24px; color: var(--accent); background: #030303;
+      border: 1px solid #252525; font: 12px 'Space Mono', monospace; text-align: center;
+    }
+    .feature-visual strong { display: block; font-size: clamp(2rem, 5vw, 4rem); color: var(--white); }
+    .feature-visual small { display: block; color: #777; margin-top: 12px; line-height: 1.6; }
+    .feature-visual.has-image { padding: 0; overflow: hidden; }
+    .feature-visual.has-image img { width: 100%; height: 100%; min-height: 260px; object-fit: cover; display: block; }
+    .feature-visual.has-logo { background: #f8f8f5; }
+    .feature-visual.has-logo img { width: 100%; height: 100%; max-height: 330px; object-fit: contain; display: block; padding: 18px; }
+    .feature-links { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 22px; }
+    .feature-links a { color: var(--accent); font: 11px 'Space Mono', monospace; text-decoration: none; }
+    .feature-links a:hover { text-decoration: underline; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .tag-row span { padding: 6px 9px; border: 1px solid #2b2b2b; color: #aaa; font: 10px 'Space Mono', monospace; }
+    .publication { border-top: 1px solid #292929; padding: 30px 0; display: grid; grid-template-columns: 100px 1fr; gap: 28px; }
+    .publication-year { color: var(--accent); font: 20px 'Space Mono', monospace; }
+    .publication h3 { font-family: Georgia, serif; font-size: clamp(1.5rem, 3vw, 2.5rem); line-height: 1.15; font-weight: 400; }
+    .publication-meta { color: #999; font: 11px 'Space Mono', monospace; letter-spacing: 1px; margin: 12px 0 18px; }
+    .publication p { color: #aaa; max-width: 780px; }
+    .publication-status { display: inline-block; margin-top: 18px; color: var(--accent); font: 10px 'Space Mono', monospace; text-transform: uppercase; letter-spacing: 1px; }
+    .leadership-card, .education-card { border-left: 1px solid var(--accent); padding: 4px 0 4px 24px; }
+    .leadership-card h3, .education-card h3 { margin: 8px 0; font-size: 1.45rem; }
+    .leadership-card p, .education-card p { color: #aaa; max-width: 720px; }
+    .experience-list { display: grid; gap: 18px; }
+    .experience-card { display: grid; grid-template-columns: 190px 1fr; gap: 28px; padding: 24px 0; border-top: 1px solid #252525; }
+    .experience-card time { color: var(--accent); font: 10px 'Space Mono', monospace; text-transform: uppercase; }
+    .experience-card h3 { font-size: 1.35rem; margin-bottom: 4px; }
+    .experience-card .company { color: #888; font: 11px 'Space Mono', monospace; }
+    .experience-card p { color: #aaa; margin-top: 12px; }
+    .identity { display: flex; align-items: center; gap: 14px; }
+    .brand-mark { width: 44px; height: 44px; flex: 0 0 44px; display: grid; place-items: center; border: 1px solid #343434; color: var(--accent); background: #0a0a0a; font: 11px 'Space Mono', monospace; letter-spacing: -.5px; }
+    .brand-mark.tw { background: #fff; color: #102d52; font-size: 10px; }
+    .brand-mark.citd { color: #f3a931; }
+    .brand-mark.metro { color: #ffca45; }
+    .brand-mark.acs { color: #57b8ff; }
+    .brand-mark.verzeo { color: #ff745d; }
+    .brand-image { width: 44px; height: 44px; flex: 0 0 44px; object-fit: contain; padding: 3px; background: #fff; border: 1px solid #343434; }
+    .education-card .brand-image { width: 86px; height: 86px; flex-basis: 86px; padding: 6px; }
+    .leadership-layout { display: grid; grid-template-columns: 180px 1fr; gap: 32px; align-items: center; }
+    .leadership-logo { width: 160px; aspect-ratio: 1; border-radius: 50%; object-fit: cover; background: #fff; }
+    .client-note { margin-top: 24px; padding: 18px; border: 1px dashed #3c3c3c; color: #aaa; }
+    .client-note strong { display: block; color: var(--white); margin-bottom: 4px; }
+    .award-gallery { display: grid; grid-template-columns: 1.2fr .8fr .8fr; gap: 14px; margin-top: 28px; }
+    .award-gallery figure { margin: 0; border: 1px solid #252525; background: #090909; overflow: hidden; }
+    .award-gallery img { display: block; width: 100%; height: 100%; min-height: 220px; object-fit: cover; }
+    .award-gallery figcaption { padding: 10px 12px; color: #888; font: 10px 'Space Mono', monospace; }
+    .award-details { border-top: 1px solid #252525; margin-top: 18px; }
+    .award-details summary { cursor: pointer; padding: 18px 0; color: var(--accent); font: 11px 'Space Mono', monospace; letter-spacing: 1px; }
+    .award-details a { color: var(--accent); font: 11px 'Space Mono', monospace; }
+    .project-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .project-link-card { display: flex; min-height: 190px; flex-direction: column; padding: 20px; border: 1px solid #252525; background: #080808; color: inherit; text-decoration: none; transition: border-color .2s, transform .2s; }
+    .project-link-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .project-link-card .project-number { color: var(--accent); font: 10px 'Space Mono', monospace; }
+    .project-link-card h3 { margin: 18px 0 8px; font-size: 1.25rem; }
+    .project-link-card p { margin: 0; color: #999; font-size: .88rem; }
+    .project-link-card span:last-child { margin-top: auto; padding-top: 16px; color: var(--accent); font: 10px 'Space Mono', monospace; }
+    .contact-links .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; }
+    .contact-icon { font-size: 1.05rem; line-height: 1; }
+    .contact-logo { width: 16px; height: 16px; object-fit: contain; }
+    .btn-outline .contact-logo { filter: invert(1); }
+    .company-logo { background: #fff; }
+    .company-logo.home-depot { padding: 0; background: #f96302; }
+    .skills-modern { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .skill-modern { border: 1px solid #1d1d1d; padding: 20px; background: #050505; }
+    .skill-modern h3 { color: var(--accent); font: 11px 'Space Mono', monospace; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+    .skill-modern p { color: #bbb; }
+    .awards-list { display: grid; gap: 0; }
+    .award { border-top: 1px solid #252525; padding: 22px 0; display: flex; justify-content: space-between; gap: 20px; }
+    .award strong { font-size: 1.2rem; }
+    .award span { color: var(--accent); font: 10px 'Space Mono', monospace; white-space: nowrap; }
+    .portfolio-note { color: #666; font-size: .8rem; margin-top: 22px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+    }
+
+    /* The new narrative supersedes the old duplicate content while the original source remains available in git history. */
+    body > #about, body > #education, body > #skills, body > #experience, body > #achievements, body > #projects, body > #interests, body > #contact { display: none; }
+
+    @media (max-width: 700px) {
+      .feature-card, .feature-card:nth-child(even) { grid-template-columns: 1fr; }
+      .feature-card:nth-child(even) .feature-visual { order: 0; }
+      .experience-card, .publication { grid-template-columns: 1fr; gap: 10px; }
+      .skills-modern { grid-template-columns: 1fr; }
+      .award { display: block; }
+      .award span { display: block; margin-top: 8px; }
+      .leadership-layout { grid-template-columns: 1fr; }
+      .leadership-logo { width: 132px; }
+      .award-gallery { grid-template-columns: 1fr; }
+      .project-cards { grid-template-columns: 1fr; }
+    }
+
     .fade-in {
       opacity: 0;
       transform: translateY(24px);
@@ -835,10 +970,11 @@
       }
 
       #scroll-hint {
-        left: 24px;
+        left: 50%;
+        transform: translateX(-50%);
         bottom: 24px;
         max-width: calc(100vw - 48px);
-        padding-left: 10px;
+        padding: 8px 12px;
       }
 
       #scroll-hint span {
@@ -888,21 +1024,20 @@
         <div id="text-content">
           <div class="name" data-value="RATNA">RATNA</div>
           <div class="name" data-value="KOUSHIK">KOUSHIK</div>
-          <div class="role">SOFTWARE DEVELOPER</div>
-          <div class="role">PRODUCT-MINDED BUILDER</div>
-          <div class="location">TRINITY WESTERN UNIVERSITY · 2027</div>
+          <div class="role">SOFTWARE DEVELOPER · RESEARCHER</div>
+          <div class="location">TRINITY WESTERN UNIVERSITY · LANGLEY, BC</div>
+          <p class="hero-intro">I build practical software for real-world problems — from production operations platforms and client websites to applied AI systems and research.</p>
+          <a class="hero-research" href="#research">FIRST-AUTHOR RESEARCH · IEEE IEMCON 2026 →</a>
           <div class="links">
-            <a href="https://github.com/itsgnex" target="_blank">GITHUB</a>
-            <a href="https://www.linkedin.com/in/ratnakoushikappasani/" target="_blank">LINKEDIN</a>
+            <a href="#featured">EXPLORE WORK</a>
+            <a href="#research">RESEARCH</a>
             <a href="Ratna_Resume.pdf" target="_blank">RESUME</a>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ratnakoushikappasani@gmail.com"
-              target="_blank">EMAIL</a>
           </div>
         </div>
       </div>
       <div id="scroll-hint">
-        <span>Scroll To Explore</span>
-        <span>face &gt; work &gt; github</span>
+        <span>Scroll to explore</span>
+        <span>selected work · research · experience</span>
         <div class="arrow"></div>
       </div>
       <pre id="car-quote">"Built to be reliable.
@@ -913,6 +1048,135 @@ Like a Porsche 911."</pre>
   </div>
 
   <div class="divider"></div>
+
+  <main id="portfolio-content">
+    <nav class="site-nav" aria-label="Portfolio sections">
+      <a href="#featured">Work</a><a href="#research">Research</a><a href="#experience-new">Experience</a><a href="#leadership">Leadership</a><a href="#skills-new">Skills</a><a href="#education-new">Education</a><a href="#contact-new">Contact</a>
+    </nav>
+    <section id="featured" class="section portfolio-section fade-in">
+      <div class="section-kicker">// Selected work</div>
+      <h2>Built for the <span class="hl">real world</span></h2>
+      <p class="section-lede">Production software, client websites, student community work, and applied research — presented with the engineering context behind each build.</p>
+      <div class="featured-grid">
+        <article class="feature-card" id="metro-kids">
+          <div class="feature-visual"><div><strong>37</strong> Prisma models<small>Production operations platform<br>for Metro Kids Society</small></div></div>
+          <div>
+            <div class="feature-meta">Production full-stack application · Metro Kids Society</div>
+            <h3>Metro Kids Paperless</h3>
+            <p>Designed, developed, deployed, and continue supporting a centralized operations platform for a community organization in Langley. It replaces disconnected spreadsheets and legacy workflows with a secure PostgreSQL-backed system.</p>
+            <div class="tag-row"><span>Next.js 16</span><span>React 19</span><span>TypeScript</span><span>PostgreSQL</span><span>Prisma</span><span>Auth.js</span><span>Playwright</span></div>
+            <p class="portfolio-note">Highlights: role-based authorization, sequence-safe IDs, advisory locks for route ordering, concurrent import workers, audit logs, transactional email, and ongoing technical support.</p>
+            <div class="feature-links"><a href="metro-kids/">READ THE CASE STUDY →</a></div>
+          </div>
+        </article>
+
+        <article class="feature-card" id="dekker">
+          <div class="feature-visual has-image"><img src="https://dekker.page/images/dekker-hero.webp" alt="Dekker Fraser on the Dekker the Marketer website" /></div>
+          <div>
+            <div class="feature-meta">Client website · Professional portfolio</div>
+            <h3>Dekker the Marketer</h3>
+            <p>A polished personal-branding site for Dekker Fraser, organizing marketing leadership, teaching, credentials, and courses into a clear editorial experience.</p>
+            <div class="tag-row"><span>Responsive web design</span><span>Information architecture</span><span>Personal branding</span></div>
+            <div class="feature-links"><a href="https://dekker.page" target="_blank" rel="noreferrer">VISIT LIVE WEBSITE ↗</a></div>
+          </div>
+        </article>
+
+        <article class="feature-card" id="met-club">
+          <div class="feature-visual has-logo"><img src="assets/logos/met-club.png" alt="MET Club logo" /></div>
+          <div>
+            <div class="feature-meta">Organization website · Student community</div>
+            <h3>MET Club Website</h3>
+            <p>Developed the official website for the MET Club to explain its disciplines, showcase activities, and make it easier for students to find their community and connect with events.</p>
+            <div class="tag-row"><span>Club branding</span><span>Responsive design</span><span>Events</span><span>Student engagement</span></div>
+            <div class="feature-links"><a href="https://metclub.club" target="_blank" rel="noreferrer">VISIT LIVE WEBSITE ↗</a><a href="#leadership">SEE LEADERSHIP →</a></div>
+          </div>
+        </article>
+
+        <article class="feature-card" id="trailrecall">
+          <div class="feature-visual"><div><strong>GPS → VOICE</strong> trail retracing<small>Smart glasses · Android · OpenStreetMap<br>12-participant prototype evaluation</small></div></div>
+          <div>
+            <div class="feature-meta">Applied AI · Accessibility · Research system</div>
+            <h3>TrailRecall</h3>
+            <p>An audio-augmented smart-glasses navigation prototype combining GPS breadcrumbs, OpenStreetMap routing, speech interaction, and AI-assisted environmental descriptions for dementia-informed outdoor navigation research.</p>
+            <div class="tag-row"><span>Android</span><span>Python</span><span>GPS</span><span>OpenStreetMap</span><span>Speech</span><span>LLM integration</span></div>
+            <div class="feature-links"><a href="#research">READ RELATED PUBLICATION →</a></div>
+            <p class="portfolio-note">This is a prototype usability study; no clinical benefit or dementia outcome is claimed.</p>
+          </div>
+        </article>
+      </div>
+      <div class="client-note"><strong>Working client project · The Nail Canvas CA</strong>Website work is in progress. Details, imagery, and the live link will be added once approved for publication.</div>
+    </section>
+
+    <section id="research" class="section portfolio-section fade-in">
+      <div class="section-kicker">// Research archive</div>
+      <h2>Research &amp; <span class="hl">Publications</span></h2>
+      <p class="section-lede">Exploring the intersection of artificial intelligence, accessibility, and human-centred computing.</p>
+      <article class="publication" id="trailrecall-paper">
+        <div class="publication-year">2026</div>
+        <div>
+          <h3>TrailRecall: Audio-Augmented Smart Glasses System for People with Dementia on Trails</h3>
+          <div class="publication-meta">Ratna Koushik Appasani · First Author · IEEE IEMCON 2026 · Conference Paper</div>
+          <p>TrailRecall investigates how audio-augmented smart glasses and smartphone-based navigation can support people with dementia when retracing previously walked outdoor routes. The system integrates GPS navigation, OpenStreetMap routing, spoken instructions, and AI-assisted environmental descriptions. A 12-participant usability evaluation examined the prototype's interaction design and technical performance.</p>
+          <div class="tag-row"><span>Human-computer interaction</span><span>Assistive technology</span><span>Accessible navigation</span><span>Wearable computing</span><span>Artificial intelligence</span></div>
+          <span class="publication-status">Accepted for presentation · verify proceedings status before publication or indexing claims</span>
+          <div class="feature-links"><a href="#trailrecall">VIEW ENGINEERING CASE STUDY →</a></div>
+        </div>
+      </article>
+      <p class="portfolio-note">DOI, official proceedings URL, coauthor list, and public PDF are intentionally omitted until verified or supplied.</p>
+    </section>
+
+    <section id="experience-new" class="section portfolio-section fade-in">
+      <div class="section-kicker">// Professional experience</div>
+      <h2>Where I’ve <span class="hl">worked</span></h2>
+      <div class="experience-list">
+        <article class="experience-card"><time>Jun–Sep 2026<br>Ongoing support</time><div><div class="identity"><img class="brand-image company-logo" src="https://metrokids.ca/wp-content/uploads/2023/09/colour-horizontal.png" alt="Metro Kids Society logo" /><div><h3>Software Development Intern / Application Support</h3><div class="company">Metro Kids Society · Langley, BC</div></div></div><p>Developed and maintained a production operations platform that consolidated staff workflows into one secure, centralized application. Responsible for full-stack development, database reliability, user-facing features, troubleshooting, and ongoing technical support.</p></div></article>
+        <article class="experience-card"><time>Apr–Aug 2025</time><div><div class="identity"><img class="brand-image company-logo" src="https://acsestech.com/img/logo.png" alt="Acsestech Consulting Services logo" /><div><h3>App Development Intern</h3><div class="company">Acsestech Consulting Services · Hyderabad, India</div></div></div><p>Built React Native functionality, integrated REST APIs and JSON data, resolved 20+ software defects, and performed functional and cross-device testing.</p></div></article>
+        <article class="experience-card"><time>Jun–Jul 2022</time><div><div class="identity"><img class="brand-image" src="https://s3-us-west-2.amazonaws.com/issuewireassets/primg/1416/logo.jpg" alt="Verzeo logo" /><div><h3>App Development Intern</h3><div class="company">Verzeo / ImmenseSphere · Hyderabad, India</div></div></div><p>Developed Android interfaces using Java and XML, built reusable components across 10+ screens, and tested navigation, input handling, and application behaviour.</p></div></article>
+        <article class="experience-card"><time>Since Apr 2024</time><div><div class="identity"><img class="brand-image company-logo home-depot" src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20Home%20Depot%20logo.svg" alt="The Home Depot logo" /><div><h3>Additional Experience · The Home Depot</h3><div class="company">Langley, British Columbia</div></div></div><p>Customer service, Tool Rental and lumber operations, associate coaching, team coordination, safety, and troubleshooting across six departments. Recognized with three Employee of the Month recognitions and Homer Awards.</p></div></article>
+      </div>
+    </section>
+
+    <section id="leadership" class="section portfolio-section fade-in">
+      <div class="section-kicker">// Leadership &amp; community</div>
+      <h2>Build the <span class="hl">community</span> too</h2>
+      <div class="leadership-card"><div class="leadership-layout"><img class="leadership-logo" src="assets/logos/met-club.png" alt="MET Club logo" /><div><div class="feature-meta">2026–present · Trinity Western University</div><h3>President, Mathematics, Engineering, and Technology Club</h3><p>Lead a student community that brings mathematics, engineering, and technology students together through hands-on events, professional development, and opportunities to connect.</p><p class="portfolio-note">I coordinate programming, communications, partnerships, and the club’s web presence — including <a class="hero-research" href="https://metclub.club" target="_blank" rel="noreferrer">metclub.club ↗</a>.</p></div></div></div>
+    </section>
+
+    <section id="skills-new" class="section portfolio-section fade-in">
+      <div class="section-kicker">// Technical skills</div><h2>How I <span class="hl">build</span></h2>
+      <div class="skills-modern">
+        <div class="skill-modern"><h3>Languages</h3><p>Python · TypeScript · JavaScript · Java · SQL · HTML · CSS · C/C++</p></div>
+        <div class="skill-modern"><h3>Frontend &amp; mobile</h3><p>React · Next.js · React Native · Android SDK · responsive design</p></div>
+        <div class="skill-modern"><h3>Backend &amp; databases</h3><p>Node.js · PostgreSQL · Prisma · REST APIs · Firebase · Firestore · Auth.js</p></div>
+        <div class="skill-modern"><h3>Infrastructure &amp; testing</h3><p>Docker · Git · GitHub · Vercel · Linux · Playwright · debugging · deployment · automated testing</p></div>
+        <div class="skill-modern"><h3>AI &amp; research</h3><p>Machine learning · scikit-learn · NumPy · speech recognition · computer vision · LLM integration · GPS · OpenStreetMap</p></div>
+      </div>
+    </section>
+
+    <section id="education-new" class="section portfolio-section fade-in">
+      <div class="section-kicker">// Education</div><h2>Learning by <span class="hl">building</span></h2>
+      <div class="experience-list">
+        <article class="education-card"><div class="identity"><img class="brand-image" src="https://static.wixstatic.com/media/fc0322_10e21e064a884d6fb3e3383447fca126~mv2.png/v1/fill/w_500%2Ch_500%2Cal_c/TWU%20Logo%20New.png" alt="Trinity Western University logo" /><div><div class="feature-meta">Jan 2024–expected May 2027 · Langley, British Columbia</div><h3>Bachelor of Science in Computing Science</h3><p>Trinity Western University</p></div></div></article>
+        <article class="education-card"><div class="identity"><img class="brand-image" src="assets/logos/citd.png" alt="Central Institute of Tool Design logo" /><div><div class="feature-meta">Jun 2020–Jun 2023 · Telangana, India</div><h3>Diploma in Automation and Robotic Engineering</h3><p>Central Institute of Tool Design</p></div></div></article>
+      </div>
+    </section>
+
+    <section id="additional" class="section portfolio-section fade-in">
+      <div class="section-kicker">// Additional projects</div><h2>More on <span class="hl">GitHub</span></h2>
+      <p class="section-lede">Selected experiments and course work, kept compact so the production work stays in focus.</p>
+      <div class="project-cards">
+        <a class="project-link-card" href="https://github.com/itsgnex/Donation-Intake-tracker" target="_blank" rel="noreferrer"><span class="project-number">01 · ANDROID / FIREBASE</span><h3>FoodLink Donation Intake</h3><p>Digital donation logging with validated records, offline synchronization, and reporting workflows.</p><span>VIEW REPOSITORY ↗</span></a>
+        <a class="project-link-card" href="https://github.com/itsgnex/kmer-ml-classifier" target="_blank" rel="noreferrer"><span class="project-number">02 · MACHINE LEARNING</span><h3>Escherichia Classification</h3><p>Sequence classification using alignment-free k-mer features for biological data.</p><span>VIEW REPOSITORY ↗</span></a>
+        <a class="project-link-card" href="https://github.com/itsgnex/nw-hackathon-2026" target="_blank" rel="noreferrer"><span class="project-number">03 · FLASK / AI</span><h3>Cipher BC</h3><p>Privacy-first document Q&amp;A for British Columbia regulations and legal guidance.</p><span>VIEW REPOSITORY ↗</span></a>
+        <a class="project-link-card" href="https://github.com/itsgnex/Ghost-helper" target="_blank" rel="noreferrer"><span class="project-number">04 · LOCAL AI</span><h3>Ghost Helper</h3><p>A local-first browser assistant for understanding the active page and its imagery.</p><span>VIEW REPOSITORY ↗</span></a>
+        <a class="project-link-card" href="https://github.com/itsgnex/TWU-Hackathon-2026-Neural-Network" target="_blank" rel="noreferrer"><span class="project-number">05 · PYTHON</span><h3>Chess Bot Backend</h3><p>A controlled Python backend for organizing and hosting chess-bot tournaments.</p><span>VIEW REPOSITORY ↗</span></a>
+      </div>
+    </section>
+
+    <section id="awards-new" class="section portfolio-section fade-in"><div class="section-kicker">// Awards &amp; achievements</div><h2>Moments that <span class="hl">mattered</span></h2><div class="awards-list"><div class="award"><strong>1st Place — Cyber Strike Challenge</strong><span>UFV Cyber Defense &amp; AI Hackathon · May 2026</span></div><div class="award"><strong>Three Employee of the Month recognitions and Homer Awards</strong><span>The Home Depot</span></div></div><details class="award-details"><summary>VIEW CYBER STRIKE EVENT &amp; EVIDENCE</summary><p class="portfolio-note">The Cyber Strike Challenge was part of UFV’s Cyber Defense &amp; AI Hackathon.</p><a href="https://www.eventbrite.ca/e/cyber-strike-challenge-cyber-defense-ai-hackathon-tickets-1985003335411" target="_blank" rel="noreferrer">VIEW EVENT DETAILS ON EVENTBRITE ↗</a><div class="award-gallery"><figure><img src="assets/awards/ufv-certificate.png" alt="Cyber Strike Challenge certificate awarded to Ratna Koushik Appasani" loading="lazy" /><figcaption>Cyber Strike Challenge certificate</figcaption></figure><figure><img src="assets/awards/ufv-group.jpg" alt="Participants at the UFV cybersecurity hackathon" loading="lazy" /><figcaption>UFV Cybersecurity Hackathon</figcaption></figure><figure><img src="assets/awards/ufv-presentation.jpg" alt="Team presenting at the UFV cybersecurity hackathon" loading="lazy" /><figcaption>Presenting the challenge work</figcaption></figure></div></details></section>
+
+    <section id="contact-new" class="section portfolio-section fade-in"><div class="section-kicker">// Contact</div><h2>Let’s <span class="hl">connect</span></h2><p class="section-lede">If you’re hiring, building something useful, or want to talk about product, software, AI, design, or research, I’d be glad to connect.</p><div class="contact-links"><a class="btn" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ratnakoushikappasani@gmail.com" target="_blank"><img class="contact-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/gmail.svg" alt="" />Email</a><a class="btn btn-outline" href="Ratna_Resume.pdf" download><img class="contact-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/adobeacrobatreader.svg" alt="" />Resume</a><a class="btn btn-outline" href="https://www.linkedin.com/in/ratnakoushikappasani/" target="_blank" rel="noreferrer"><img class="contact-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/linkedin.svg" alt="" />LinkedIn</a><a class="btn btn-outline" href="https://github.com/itsgnex" target="_blank" rel="noreferrer"><img class="contact-logo" src="https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/github.svg" alt="" />GitHub</a></div></section>
+  </main>
 
   <section id="about" class="section fade-in">
     <div class="about-text">

@@ -34,6 +34,7 @@ Then visit `http://localhost:8000`
 ## Project Structure
 
 - `index.html` - complete site markup, styling, and animation logic
+- `metro-kids/index.html` - privacy-safe technical case study for the Metro Kids production platform, available at `/metro-kids/`
 - `face.png` - source image for the ASCII face render
 - `car.png` - source image for the Porsche transition
 - `Ratna_Resume.pdf` - downloadable resume used by the site

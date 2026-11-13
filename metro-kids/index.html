@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metro Kids Paperless — Ratna Koushik Appasani</title>
+  <meta name="description" content="A privacy-safe technical case study of the Metro Kids Paperless production operations platform." />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" />
+  <style>
+    :root { --bg:#000; --panel:#080808; --line:#242424; --text:#f0f0f0; --muted:#999; --accent:#c8ff00; }
+    * { box-sizing:border-box; } html { scroll-behavior:smooth; } body { margin:0; background:var(--bg); color:var(--text); font:16px/1.7 Inter,sans-serif; }
+    a { color:var(--accent); } .wrap { width:min(1080px,calc(100% - 48px)); margin:auto; } .top { padding:28px 0; border-bottom:1px solid var(--line); }
+    .back { font:11px 'Space Mono',monospace; text-decoration:none; letter-spacing:1px; } .hero { padding:110px 0 80px; border-bottom:1px solid var(--line); }
+    .kicker { color:var(--accent); font:11px 'Space Mono',monospace; letter-spacing:2px; text-transform:uppercase; } h1 { max-width:820px; margin:18px 0; font-size:clamp(2.8rem,8vw,6.5rem); line-height:.98; letter-spacing:-.07em; } h2 { margin-top:0; font-size:clamp(1.7rem,4vw,3rem); line-height:1.1; } p { color:var(--muted); max-width:760px; }
+    .lede { font-size:1.2rem; max-width:700px; } .grid { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; } section { padding:76px 0; border-bottom:1px solid var(--line); } .card { padding:24px; border:1px solid var(--line); background:var(--panel); } .card h3 { margin:0 0 8px; } .card p { margin:0; font-size:.95rem; }
+    .diagram { padding:28px; border:1px solid #343434; background:linear-gradient(135deg,#0d0d0d,#030303); font:12px/2 'Space Mono',monospace; color:#aaa; overflow:auto; white-space:pre; } .diagram b { color:var(--accent); font-weight:400; }
+    ul { color:var(--muted); padding-left:20px; } li { margin:6px 0; } .note { color:#777; font-size:.85rem; } footer { padding:40px 0; color:#555; font:10px 'Space Mono',monospace; letter-spacing:1px; }
+    @media (max-width:700px) { .wrap { width:min(100% - 32px,1080px); } .hero { padding:72px 0 54px; } .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header class="top"><div class="wrap"><a class="back" href="../#metro-kids">← BACK TO SELECTED WORK</a></div></header>
+  <main>
+    <section class="hero"><div class="wrap"><div class="kicker">Production full-stack application · Metro Kids Society · Langley, BC</div><h1>Metro Kids<br><span style="color:var(--accent)">Paperless</span></h1><p class="lede">A centralized operations platform replacing disconnected spreadsheets, browser-storage workflows, and legacy Google Apps Script processes with a secure PostgreSQL-backed system.</p><p class="note">The organization serves approximately 700 students; that figure describes organizational scale, not verified application users.</p></div></section>
+    <section><div class="wrap"><div class="kicker">01 · The problem</div><h2>From fragmented workflows to one dependable system.</h2><p>Staff needed to manage child and guardian profiles, registrations, events, approvals, visitation, transportation, and reporting across disconnected tools. The goal was a system that made everyday operations easier while protecting sensitive records and preserving an audit trail.</p></div></section>
+    <section><div class="wrap"><div class="kicker">02 · What I built</div><div class="grid"><div class="card"><h3>Operations</h3><p>Profiles, registration and RSVP forms, event and program management, staff approvals, duplicate detection, record merging, and audit logs.</p></div><div class="card"><h3>Transportation</h3><p>Visitation planning, worker assignments, digital bus lists, route links, pickup sequencing, and scheduling.</p></div><div class="card"><h3>Data workflows</h3><p>CSV/XLS/XLSX imports and exports with validation, conflict detection, asynchronous processing, and reporting support.</p></div><div class="card"><h3>Account safety</h3><p>Staff authentication, four server-enforced roles, notifications, transactional email, password resets, and rate limiting.</p></div></div></div></section>
+    <section><div class="wrap"><div class="kicker">03 · Architecture</div><div class="diagram"><b>Next.js 16 / React 19 / TypeScript</b>
+        │ server-rendered pages + server actions + API routes
+        ▼
+        <b>Auth.js · Zod · role checks · rate limiting</b>
+        │ validated requests and server-enforced permissions
+        ▼
+        <b>Prisma 6</b> ────── <b>PostgreSQL 17</b>
+        │                         │
+        │                         ├─ 37 models · 21 enums
+        │                         └─ 33 migrations · audit records
+        ├─ import workers (FOR UPDATE SKIP LOCKED)
+        ├─ route ordering (advisory transaction locks)
+        └─ sequence-based student IDs
+        │
+        ▼
+        Docker Compose · Playwright · Vercel · Brevo / Resend · Geoapify
+      </div><p class="note">Diagram is intentionally high-level and contains no private URLs, credentials, source code, or operational data.</p></div></section>
+    <section><div class="wrap"><div class="kicker">04 · Reliability under concurrency</div><div class="grid"><div class="card"><h3>Unique IDs</h3><p>PostgreSQL sequence-based student ID generation prevents duplicate identifiers during concurrent operations.</p></div><div class="card"><h3>Route ordering</h3><p>PostgreSQL advisory transaction locks protect transportation-route ordering when multiple updates compete.</p></div><div class="card"><h3>Import safety</h3><p>FOR UPDATE SKIP LOCKED lets asynchronous workers claim import jobs without processing the same job twice.</p></div><div class="card"><h3>Idempotent workflows</h3><p>Registration and RSVP flows validate, match duplicates, detect conflicts, and limit updates through approval-controlled paths.</p></div></div></div></section>
+    <section><div class="wrap"><div class="kicker">05 · Testing & support</div><h2>Built, shipped, and kept healthy.</h2><p>Automated coverage includes 191 unit-test declarations and 11 Playwright spec definitions. After the internship, I continued troubleshooting and maintaining the deployed platform as part-time technical support.</p><ul><li>Confirmed technology stack: Next.js, React, TypeScript, PostgreSQL, Prisma, Auth.js, Zod, Docker Compose, Playwright, SheetJS, Geoapify, Brevo, Resend, and Vercel.</li><li>Public presentation omits real child records, guardian details, private application URLs, credentials, and confidential source code.</li></ul></div></section>
+  </main>
+  <footer><div class="wrap">METRO KIDS PAPERLESS · PRIVACY-SAFE CASE STUDY · <a href="../">RATNA KOUSHIK APPASANI</a></div></footer>
+</body>
+</html>
